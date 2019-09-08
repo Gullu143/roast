@@ -1,0 +1,8 @@
+<%= form_with model: @comment, :remote => true do |form| %>
+	<%= form.label :name %>
+	<%= form.text_field :name %>
+	<%= form.label :Description %>
+	<%= form.text_field :body %>
+	<%= form.hidden_field :post_id, value:@post.id %>
+	<%= form.submit 'new comment', id: 'new_comment' %>
+<%end%>

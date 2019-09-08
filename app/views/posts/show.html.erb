@@ -1,0 +1,15 @@
+<strong>Title</strong><br>
+<%= @post.title %><br>
+<strong>Description</strong><br>
+<%= @post.description %><br>
+<strong>category</strong><br>
+<%= @post.category.name%><br>
+<%= link_to 'edit', edit_post_path %><br>
+<hr>
+<% @post.comments.each do |comment|%>
+	<strong>Name</strong><br>
+	<%= comment.name %><br>
+	<strong>comment description</strong><br>
+	<%= comment.body %><br><br>
+<%end%>
+<%= render 'comments/form' %>

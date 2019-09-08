@@ -1,0 +1,9 @@
+<%= form_with model: @post do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<%= f.label :Description %>
+	<%= f.text_field :description %>
+	<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => 'Select' %>
+
+	<%=f.submit%>
+<%end%>

@@ -1,0 +1,27 @@
+
+<%= link_to 'new post', new_post_path %>
+<br>
+<br>
+<table border="1px">
+	<tr>
+		<th>Title</th>
+		<th>description</th>
+		<th>edit</th>
+		<th>show</th>
+		<th>delete</th>
+	</tr>
+	<% @post.each do |post|%>
+		<tr>
+			<td><%= post.title %></td>
+			<td><%= post.description%></td>
+			<td><%= link_to 'Edit', edit_post_path(post) %></td>
+			<td><%= link_to 'Show', post_path(post) %></td>
+			<td><%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<%end%>
+</table>
+
+
+
+
+

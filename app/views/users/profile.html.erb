@@ -1,0 +1,10 @@
+<%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-primary mt-3' %>
+<%= @user.email%>
+<%= @user.phone%>
+<%= @user.name%>
+<%= image_tag (@user.image) if @user.image.attached?%>
+<br>
+<% current_user.posts.each do |post|%>
+<strong>post name</strong>
+<%=post.title%>
+<%end%>

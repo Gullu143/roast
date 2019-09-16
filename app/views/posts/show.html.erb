@@ -4,6 +4,7 @@
 <%= @post.description %><br>
 <strong>category</strong><br>
 <%= @post.category.name%><br>
+<%= image_tag (@post.image) if @post.image.attached?%><br>
 <%= link_to 'edit', edit_post_path %><br>
 <hr>
 <% @post.comments.each do |comment|%>

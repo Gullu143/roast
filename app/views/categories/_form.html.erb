@@ -1,4 +1,5 @@
 <%= form_with model: @category do |form|%>
+<%= form.hidden_field :user_id, value: @user.id%>
 <%=form.label :name %>
 <%=form.text_field :name %>
 <%= form.submit%>

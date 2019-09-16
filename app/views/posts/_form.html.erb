@@ -1,9 +1,17 @@
 <%= form_with model: @post do |f| %>
+<% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+	<%= f.hidden_field :user_id, value: @user.id %>
 	<%= f.label :title %>
 	<%= f.text_field :title %>
 	<%= f.label :Description %>
 	<%= f.text_field :description %>
+	<%= f.label :image %>
+	<%= f.file_field :image %>
+	
 	<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => 'Select' %>
-
 	<%=f.submit%>
 <%end%>

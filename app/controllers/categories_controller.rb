@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :index]
   def index
   	@category = Category.all
   end
@@ -10,6 +11,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    @user = current_user
   	@category = Category.new
   end
 
@@ -21,6 +23,6 @@ class CategoriesController < ApplicationController
 
   private
   	def category_params
-  		params.require(:category).permit(:name);
+  		params.require(:category).permit(:name, :user_id);
   	end
 end

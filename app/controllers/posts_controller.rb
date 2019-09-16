@@ -1,13 +1,17 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :index]
+
   def index
   	@post = Post.all
   end
 
   def new
-  	@post = Post.new
+    @user = current_user
+    @post = Post.new
   end
 
   def edit
+    @user = current_user
   	@post = Post.find(params[:id])
   end
 
@@ -18,8 +22,11 @@ class PostsController < ApplicationController
 
   def create
   	@post = Post.new(post_params)
-  	@post.save
-  	redirect_to @post
+  	if @post.save
+  	 redirect_to @post, notice: 'successfully created post.'
+    else
+      redirect_to new_post_path, notice: 'try again'
+    end
   end
 
   def update
@@ -39,7 +46,7 @@ class PostsController < ApplicationController
 
   private
    def post_params
-   	params.require(:post).permit(:title, :description, :category_id)	
+   	params.require(:post).permit(:title, :description, :category_id, :image, :user_id)	
    end
 
 end

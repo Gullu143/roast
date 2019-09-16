@@ -2,15 +2,18 @@
 <%= link_to 'new category', new_category_path %>
 <br>
 <br>
-<table border="1px">
-	<tr>
-		<th>category name</th>
-		
-	</tr>
-	<% @category.each do |category|%>
+
+	<table border="1px">
 		<tr>
-			<td><%= category.name %></td>
+			<th>category name</th>
 			
 		</tr>
-	<%end%>
-</table>
+		<% @category.each do |category|%>
+		
+			<tr>
+				<td><%= category.name %></td>
+				
+			</tr>
+			
+		<%end%>
+	</table>
